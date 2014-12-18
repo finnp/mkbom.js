@@ -1,0 +1,21 @@
+{
+  "name": "mkbom",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "bin": {
+    "ls4mkbom": "./ls4mkbom.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Finn Pauls",
+  "license": "MIT",
+  "dependencies": {
+    "buffer-crc32": "^0.2.5",
+    "crc32-stream": "^0.3.1",
+    "ls-r": "^0.2.1",
+    "stream-wrapper": "^0.1.2",
+    "walk": "^2.3.4"
+  }
+}
