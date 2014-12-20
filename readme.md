@@ -1,7 +1,7 @@
 # mkbom
 Windows | Linux
 ------- | ---------
-[![Windows Build status](http://img.shields.io/appveyor/ci/finnp/mkbom.js.svg)](https://ci.appveyor.com/project/finnp/mkbom.js/branch/master) | [![Build Status](https://travis-ci.org/finnp/mkbom-js.svg?branch=master)](https://travis-ci.org/finnp/mkbom-js)
+[![Windows Build status](http://img.shields.io/appveyor/ci/finnp/mkbom-js.svg)](https://ci.appveyor.com/project/finnp/mkbom-js/branch/master) | [![Build Status](https://travis-ci.org/finnp/mkbom.js.svg?branch=master)](https://travis-ci.org/finnp/mkbom.js)
 
 JavaScript implementation of the Mac OSX cli `mkbom` for creating Installers.
 
