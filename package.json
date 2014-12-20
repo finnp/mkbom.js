@@ -1,6 +1,6 @@
 {
   "name": "mkbom",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "JS implementation of OSX mkbom.",
   "main": "index.js",
   "bin": {
