@@ -1,10 +1,10 @@
 {
   "name": "mkbom",
   "version": "1.0.0",
-  "description": "",
+  "description": "JS implementation of OSX mkbom.",
   "main": "index.js",
   "bin": {
-    "ls4mkbom": "./ls4mkbom.js"
+      "mkbomjs": "./cli.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -12,10 +12,23 @@
   "author": "Finn Pauls",
   "license": "MIT",
   "dependencies": {
-    "buffer-crc32": "^0.2.5",
-    "crc32-stream": "^0.3.1",
     "ls-r": "^0.2.1",
-    "stream-wrapper": "^0.1.2",
-    "walk": "^2.3.4"
-  }
+    "stream-wrapper": "^0.1.2"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/finnp/mkbom.js.git"
+  },
+  "keywords": [
+    "mkbom",
+    "bom",
+    "bomutils",
+    "mac",
+    "installer"
+  ],
+  "bugs": {
+    "url": "https://github.com/finnp/mkbom.js/issues"
+  },
+  "homepage": "https://github.com/finnp/mkbom.js"
 }

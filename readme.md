@@ -2,6 +2,8 @@
 
 JavaScript implementation of the Mac OSX cli `mkbom` for creating Installers.
 
+Install with `npm install mkbom`.
+
 Implementation adopted from the Open Source C++ work by @hoghliux: https://github.com/hogliux/bomutils
 
 It's a first working and likely to have bugs.
@@ -20,9 +22,9 @@ mkbom('./my/folder', function (stream) {
 
 ## Command line interface
 
-Install with `npm install mkbom -g`
+Install with `npm install mkbom -g` or `npm link`
 
 ```
-mkbom [path] [bomfile]
+usage: mkbomjs <path> [bomfile]
 ```
 
