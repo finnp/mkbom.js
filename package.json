@@ -12,6 +12,7 @@
   "author": "Finn Pauls",
   "license": "MIT",
   "dependencies": {
+    "cksum": "^1.0.0",
     "ls-r": "^0.2.1",
     "stream-wrapper": "^0.1.2"
   },

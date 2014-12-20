@@ -1,6 +1,6 @@
 var lsr = require('ls-r')
 var fs = require('fs')
-var crc32 = require('./crc.js') // TODO: ordering problem with buffer-crc32?
+var crc32 = require('cksum')
 
 module.exports = function (dir, cb) {
   // TODO: rewrite dir to ./ if !== ./
