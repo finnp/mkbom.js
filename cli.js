@@ -12,7 +12,6 @@ var path = process.argv[2] || './'
 
 var target = process.argv[3]
 
-mkbom(path, function (stream) {
-  var output = target ? fs.createWriteStream(target) : process.stdout
-  stream.pipe(output)
-})
+var output = target ? fs.createWriteStream(target) : process.stdout
+
+mkbom(path).pipe(output)

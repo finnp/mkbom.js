@@ -18,9 +18,7 @@ because it compares files to a reference implementation with my local uid/gid/pe
 var mkbom = require('mkbom')
 var fs = require('fs')
 
-mkbom('./my/folder', function (stream) {
-  stream.pipe(fs.createWriteStream('./build/Bom'))
-})
+mkbom('./my/folder').pipe(fs.createWriteStream('./build/Bom'))
 ```
   
 

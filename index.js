@@ -1,4 +1,7 @@
 var fs = require('fs')
+var p = require('path')
+var readonly = require('read-only-stream')
+var PassThrough = require('stream').PassThrough
 var lsnodes = require('./lib/lsnodes.js')
 var BOMStorage = require('./lib/bomstorage.js')
 var BOMPaths = require('./lib/bompaths.js')
@@ -10,7 +13,9 @@ var BOMVIndex = require('./lib/bomvindex.js')
 
 module.exports = write_bom
 
-function write_bom(path, cb) {
+function write_bom(path) {
+  path = p.resolve(path)
+  var output = new PassThrough()
   var bom = new BOMStorage()
   var root = new BOMPathNode()
   root.type = 'root'
@@ -18,6 +23,8 @@ function write_bom(path, cb) {
 
   var all_nodes = []
   lsnodes(path, receivedFiles)
+  
+  return readonly(output)
   
   function receivedFiles(files) {
     files.forEach(function (file) {
@@ -165,7 +172,8 @@ function write_bom(path, cb) {
     tree.child = bom.addBlock(empty_path)
     bom.addVar("Size64", tree)
 
-    cb(bom.createReadStream())
+    bom.createReadStream().pipe(output)
     
   }
+
 }
