@@ -1,5 +1,5 @@
 var fs = require('fs')
-var lsnodes = require('./lsnodes.js')
+var lsnodes = require('./lib/lsnodes.js')
 var BOMStorage = require('./lib/bomstorage.js')
 var BOMPaths = require('./lib/bompaths.js')
 var BOMPathNode = require('./lib/bompathnode.js')
