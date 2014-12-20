@@ -6,7 +6,7 @@ var BOMPathNode = require('./lib/bompathnode.js')
 var BOMPathInfo = require('./lib/bompathinfo.js')
 var BOMFile = require('./lib/bomfile.js')
 var BOMTree = require('./lib/bomtree.js')
-var BOMVIndex = require('./lib/bomfile.js')
+var BOMVIndex = require('./lib/bomvindex.js')
 
 module.exports = write_bom
 
@@ -64,9 +64,9 @@ function write_bom(path, cb) {
     // BomInfo
     var info = new Buffer(4*3 + 1*16)
     info.fill()
-    info.writeUInt32LE(1, 0)
-    info.writeUInt32LE(num + 1, 4) // number of paths
-    info.writeUInt32LE(1, 2 * 4) // number of info entries
+    info.writeUInt32BE(1, 0)
+    info.writeUInt32BE(num + 1, 4) // number of paths
+    info.writeUInt32BE(1, 2 * 4) // number of info entries
     // more needed?
     bom.addVar('BomInfo', info)
     
@@ -76,7 +76,6 @@ function write_bom(path, cb) {
     // num_paths = number of blocks
     var num_paths = Math.ceil(num/256)
     var root_paths = new BOMPaths(num_paths)
-    
     
     var stack = [{parent: 0, node: root}] // queue
     var j = 0
@@ -152,7 +151,6 @@ function write_bom(path, cb) {
     tree = new BOMTree(0)
     tree.child = bom.addBlock(empty_path)
     bom.addVar('HLIndex', tree)
-    
     // BOMVindex
     var vindex = new BOMVIndex()
     
