@@ -10,7 +10,6 @@ module.exports = function (dir, cb) {
     if(err) return cb(err)
     var ls =  stat.map(function (file) {
       var r = {}
-      if(file[0] !== '.') file = './' + file
       var stats = fs.statSync(file)
       r.name = './' + file.substr(dir.length)
       r.uid = stats.uid
