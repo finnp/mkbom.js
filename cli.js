@@ -3,7 +3,7 @@
 var mkbom = require('./')
 var fs = require('fs')
 
-if(process.argv.length <= 2) {
+if (process.argv.length <= 2) {
   console.error('usage: mkbomjs <path> [bomfile] ')
   process.exit()
 }
