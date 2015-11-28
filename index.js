@@ -12,7 +12,8 @@ var BOMVIndex = require('./lib/bomvindex.js')
 
 module.exports = write_bom
 
-function write_bom (path) {
+function write_bom (path, opts) {
+  opts = opts || {}
   path = p.resolve(path)
   var output = new PassThrough()
   var bom = new BOMStorage()
@@ -30,8 +31,8 @@ function write_bom (path) {
       var n = new BOMPathNode()
       n.name = file.name
       n.mode = file.mode
-      n.uid = file.uid
-      n.gid = file.gid
+      n.uid = typeof opts.uid === 'number' ? opts.uid : file.uid
+      n.gid = typeof opts.gid === 'number' ? opts.gid : file.gid
       n.size = file.size || 0
       n.checksum = file.checksum || 0
       if ((n.mode & 0xf000) === 0x4000) {

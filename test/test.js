@@ -9,7 +9,7 @@ test('equal to reference file', function (t) {
   t.plan(1)
   // refrence created by open source mkbom
   var bomref = fs.readFileSync(path.join(__dirname, 'Bom'))
-  mkbom(path.join(__dirname, 'testdir'))
+  mkbom(path.join(__dirname, 'testdir'), {uid: 0, gid: 80})
     .pipe(concat(function (bom) {
       t.ok(bufferEqual(bom, bomref), 'buffer equal')
     }))
