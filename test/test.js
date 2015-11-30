@@ -1,16 +1,26 @@
 var mkbom = require('../')
-var fs = require('fs')
 var concat = require('concat-stream')
 var path = require('path')
-var bufferEqual = require('buffer-equal')
+var lsbom = require('lsbom')
 var test = require('tape')
 
 test('equal to reference file', function (t) {
-  t.plan(1)
-  // refrence created by open source mkbom
-  var bomref = fs.readFileSync(path.join(__dirname, 'Bom'))
   mkbom(path.join(__dirname, 'testdir'), {uid: 0, gid: 80})
     .pipe(concat(function (bom) {
-      t.ok(bufferEqual(bom, bomref), 'buffer equal')
+      var files = lsbom(bom)
+      t.equals(files.length, 9, 'number of files')
+      t.equals(files.map(function (a) { return a.user }).join(''), '000000000', 'all users 0')
+      t.equals(files.map(function (a) { return a.group }).join(''), '808080808080808080', 'all groups 80')
+      var map = {}
+      files.forEach(function (file) {
+        map[file.filename] = file
+      })
+      t.equals(map['.'].mode.toString(8), '40755', 'mode of parent')
+      t.equals(map['./one/beta/cats.txt'].mode.toString(8), '100644', 'mode of cats.txt')
+      t.equals(map['./faust.txt'].size, 258, 'size of faust.txt')
+      t.equals(map['./two/past.txt'].checksum, 3136442595, 'checksum of past.txt')
+      t.notOk('size' in map['./one'], 'dir one has no size')
+      t.notOk('checksum' in map['./one/alpha'], 'dir one has no checksum')
+      t.end()
     }))
 })

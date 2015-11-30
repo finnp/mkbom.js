@@ -19,8 +19,8 @@
     "stream-wrapper": "^0.1.2"
   },
   "devDependencies": {
-    "buffer-equal": "0.0.1",
     "concat-stream": "^1.4.7",
+    "lsbom": "^1.0.0",
     "tape": "^3.0.3"
   },
   "repository": {
