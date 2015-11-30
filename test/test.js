@@ -15,8 +15,8 @@ test('equal to reference file', function (t) {
       files.forEach(function (file) {
         map[file.filename] = file
       })
-      t.equals(map['.'].mode.toString(8), '40755', 'mode of parent')
-      t.equals(map['./one/beta/cats.txt'].mode.toString(8), '100644', 'mode of cats.txt')
+      t.equals(map['.'].mode, 16877, 'mode of parent')
+      t.equals(map['./one/beta/cats.txt'].mode, 33188, 'mode of cats.txt')
       t.equals(map['./faust.txt'].size, 258, 'size of faust.txt')
       t.equals(map['./two/past.txt'].checksum, 3136442595, 'checksum of past.txt')
       t.notOk('size' in map['./one'], 'dir one has no size')
