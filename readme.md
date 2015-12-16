@@ -3,6 +3,8 @@
 
 JavaScript implementation of the Mac OSX cli `mkbom` for creating Installers.
 
+[![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
+
 Install with `npm install mkbom`.
 
 Implementation adopted from the Open Source C++ work by @hoghliux: https://github.com/hogliux/bomutils
