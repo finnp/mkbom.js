@@ -26,7 +26,12 @@ function write_bom (path, opts) {
 
   return readonly(output)
 
-  function receivedFiles (files) {
+  function receivedFiles (err, files) {
+    if (err) {
+      output.emit('error', err)
+      output.end()
+      return
+    }
     files.forEach(function (file) {
       var n = new BOMPathNode()
       n.name = file.name
