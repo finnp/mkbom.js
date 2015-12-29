@@ -40,6 +40,7 @@ function write_bom (path, opts) {
       n.gid = typeof opts.gid === 'number' ? opts.gid : file.gid
       n.size = file.size || 0
       n.checksum = file.checksum || 0
+      if (file.linkName) n.linkName = file.linkName
       if ((n.mode & 0xf000) === 0x4000) {
         n.type = 'directory'
       } else if ((n.mode & 0xf000) === 0x8000) {
