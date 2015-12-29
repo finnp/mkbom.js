@@ -47,7 +47,6 @@ function write_bom (path, opts) {
         n.type = 'file'
       } else if ((n.mode & 0xf000) === 0xa000) {
         n.type = 'symboliclink'
-      // TODO: symbolic links
       } else {
         throw new Error('file type not supported')
       }
@@ -109,7 +108,7 @@ function write_bom (path, opts) {
             root_paths.setIndex(0, current_path, new_paths_id)
             if (last_path_id > 0) {
               var prev_paths = bom.getBlock(last_path_id)
-              prev_paths.forward = new_paths_id
+              prev_paths.forward = new_paths_id + 1
             }
             root_paths.setIndex(1, current_path, last_file_info)
             paths = null
@@ -145,7 +144,7 @@ function write_bom (path, opts) {
 
     if (num_paths > 1) {
       var next_block = bom.addBlock(paths)
-      bom.getBlock(last_path_id).forward = next_block
+      bom.getBlock(last_path_id).forward = next_block + 1
       root_paths.setIndex(0, current_path, next_block)
       root_paths.setIndex(1, current_path, last_file_info)
       tree.child = bom.addBlock(root_paths)
