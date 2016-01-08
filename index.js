@@ -41,11 +41,11 @@ function write_bom (path, opts) {
       n.size = file.size || 0
       n.checksum = file.checksum || 0
       if (file.linkName) n.linkName = file.linkName
-      if (file.stats.isDirectory()) {
+      if (file.isDirectory()) {
         n.type = 'directory'
-      } else if (file.stats.isFile()) {
+      } else if (file.isFile()) {
         n.type = 'file'
-      } else if (file.stats.isSymbolicLink()) {
+      } else if (file.isSymbolicLink()) {
         n.type = 'symboliclink'
       } else {
         throw new Error('file type not supported: ' + n.mode.toString(8))
